@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #F5F5DC; 
+             
+        }
+ nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 16px;
+            background-color: transparent;
+            box-sizing: border-box;
+            backdrop-filter: blur(1px);
+            z-index: 100;
+        }
+
+        nav a {
+            color: #c7950ab0;
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        nav a:hover {
+            color: #D2691E;
+        }
+        form {
+            background-color: white;
+            padding: 24px;
+            border-radius: 12px;
+            width: 400px;
+            margin: 180px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            background-color: #5a3e2b;
+            color: #c7950ab0;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer; 
+                transition: 0.3s; /* ← დაამატე */
+
+        }   
+
+         button:hover {
+    background-color: #F5F5DC;
+    transform: scale(1.08);
+}
+h2 {
+    color:#5a3e2b;
+} 
+
+label{
+    color:#5a3e2b;
+} 
+button{
+    font-weight:bold;
+} 
+
+    footer p {
+    margin: 0 auto;
+    text-align: center;
+} 
+footer {
+    padding: 100px 20px 60px; 
+    color: #D2691E;
+}
+
+    </style>
+</head>
+<body> 
+
+     <nav>
+        <div class="nav-links">
+            <a href="Miamain.html">მთავარი</a>
+            <a href="about.html">ჩემს შესახებ</a>
+            
+            <a href="contact.html">კონტაქტი</a>
+        </div> 
+
+   
+    </nav> 
+   
+
+    
+        <form action="https://formspree.io/f/mojrzppg" method="POST">
+
+        <h2>გამოგვიგზავნე შეკითხვები</h2>
+
+        <label>სახელი და გვარი</label>
+<input type="text" name="name" placeholder="">
+
+<label>Email</label>
+<input type="email" name="email" placeholder="example@gmail.com">
+
+<label>თემა</label>
+<select name="subject">
+    <option>შეკითხვა</option>
+    <option>სხვა</option>
+</select>
+
+<label>მესიჯი</label>
+<textarea rows="4" name="message" placeholder="Type message..."></textarea>
+
+<button type="submit">გაგზავნა</button>
+    </form>
+      <footer>
+        <p>©  2026 Mia Art Gallery | Teo Uchaneishvili | All Rights Reserved </p> 
+        
+    </footer>
+</body>
+</html>
