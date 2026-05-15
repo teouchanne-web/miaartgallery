@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head> 
-    <title>About Me | Mia Art Gallery</title> 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@600&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
 
+<head>
+    <title>About Me | Mia Art Gallery</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@600&family=Raleway:wght@300;400&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #F5F5DC;
@@ -59,7 +62,7 @@
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 40px;
+            font-size: 25px;
             color: #D2691E;
             margin-bottom: 20px;
         }
@@ -69,12 +72,7 @@
             line-height: 1.8;
         }
 
-        footer {
-            padding: 60px 20px;
-            color: #D2691E;
-            text-align: center; 
-            margin-top: 300px;
-        }
+
 
         @media (max-width: 768px) {
             h1 {
@@ -88,16 +86,55 @@
             nav a {
                 font-size: 14px;
                 margin: 0 8px;
-            } 
-        
-        } 
+            }
 
-footer {
-    padding: 100px 20px 60px;
-    color: #D2691E;
-    text-align: center;
+        }
+
+        footer {
+            padding: 100px 20px 60px;
+            color: #D2691E;
+            text-align: center;
+
+            font-size: 12px;
+
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+       body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-    </style> 
+
+        .container {
+            flex: 1;
+        }  
+  
+        .about-card {
+    background-color: white;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(210,105,30,0.2); 
+} 
+.about-card p {
+    text-align: justify;
+}
+
+    </style>
+
 </head>
 
 <body>
@@ -105,31 +142,34 @@ footer {
     <nav>
         <div class="nav-links">
             <a href="index.html">მთავარი</a>
-            <a href="about me.html">ჩემს შესახებ</a>
+            <a href="about.html">ჩემს შესახებ</a>
             <a href="contact.html">კონტაქტი</a>
         </div>
     </nav>
 
     <div class="container">
-        <h1>ჩემს შესახებ</h1>
+        <h1>ჩემს შესახებ</h1> 
+        <div class="about-card">
 
         <p>
-            გამარჯობა 💛  
-            მე ვარ Mia Art Gallery-ის ავტორი — მიყვარს ხატვა და ჩემი ემოციების ფერებით გადმოცემა.  
-            თითოეული ნამუშევარი ჩემთვის არის ისტორია, განცდა და მომენტი.
-        </p>
+            გამარჯობა 💛
+            ხატვა ჩემთვის ერთ-ერთი ყველაზე პოზიტიური და მნიშვნელოვანი პროცესია. ამიტომ თითოეულ ნამუშევარს აქვს თავისი
+            ისტორია და საკუთარი ენერგია. ბავშვობიდან ვიზრდები მხატვრების ოჯახში და სწორედ ეს გარემო გახდა ჩემი ყველაზე
+            დიდი შთაგონება და საფუძველი. </p>
 
         <p>
-            ჩემი მიზანია, რომ ხელოვნებამ ადამიანებს სიმშვიდე, სითბო და შთაგონება მოუტანოს.  
-            ეს გალერეა არის ჩემი პატარა სამყარო, რომელსაც თქვენთან ვაზიარებ.
+            ჩემს ნამუშევრებში იპოვით როგორც სიმშვიდეს, ისე ძლიერ ემოციას. თუ გსურთ თქვენს სივრცეს მეტი სითბო, დადებითი ენერგია და კარგი განწყობა შემატოთ — სწორ ადგილას ხართ.
+
+            გისურვებთ სასიამოვნო მოგზაურობას გალერეაში ✨
         </p>
-    </div> 
+    
 
-
-
+</div>
+</div>
     <footer>
         <p>© 2026 Mia Art Gallery | Teo Uchaneishvili | All Rights Reserved</p>
     </footer>
 
 </body>
+
 </html>
