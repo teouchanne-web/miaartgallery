@@ -3,7 +3,7 @@
 <head>
     <title>Contact Form</title> 
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="style.css"> 
     <style>
         body {
             font-family: Arial, sans-serif; 
@@ -92,7 +92,8 @@ button{
 footer {
     padding: 100px 20px 60px; 
     color: #D2691E;
-}
+} 
+html, body { height: 100%; margin: 0; } body { display: flex; flex-direction: column; } main { flex: 1; }
 
     </style>
 </head>
@@ -101,14 +102,14 @@ footer {
      <nav>
         <div class="nav-links">
             <a href="Miamain.html">მთავარი</a>
-            <a href="about me.html">ჩემს შესახებ</a>
+            <a href="about.html">ჩემს შესახებ</a>
             
             <a href="contact.html">კონტაქტი</a>
         </div> 
 
    
     </nav> 
-   
+   <main>
 
     <form action="https://formspree.io/f/mojrzppg" method="POST">
         <h2>შეკვეთის ფორმა</h2>
@@ -130,7 +131,8 @@ footer {
         <label>მესიჯი </label>
         <textarea rows="4" name="message" placeholder="Type message..."></textarea>
         <button type="submit">გაგზავნა</button>
-    </form>
+    </form> 
+    </main>
       <footer>
         <p>©  2026 Mia Art Gallery | Teo Uchaneishvili | All Rights Reserved </p> 
         
