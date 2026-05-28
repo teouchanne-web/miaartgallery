@@ -1,20 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="ka">
 
 <head>
-    <title>About Me | Mia Art Gallery</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@600&family=Raleway:wght@300;400&display=swap"
-        rel="stylesheet">
+    <title>About | Mia Art Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@600&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             background-color: #F5F5DC;
             margin: 0;
             font-family: 'Raleway', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* LANG TOGGLE */
+        .lang-toggle {
+            position: fixed;
+            top: 15px;
+            right: 24px;
+            z-index: 200;
+            display: flex;
+            gap: 4px;
+            background: rgba(245,245,220,0.9);
+            border: 1.5px solid #c7950a60;
+            border-radius: 30px;
+            padding: 4px 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            color: #c7950ab0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            transition: 0.25s;
+            letter-spacing: 0.05em;
+        }
+
+        .lang-btn.active {
+            background-color: #D2691E;
+            color: #fff;
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: #D2691E;
+        }
+
+        /* NAV */
         nav {
             position: fixed;
             top: 0;
@@ -36,23 +77,20 @@
             margin: 0 16px;
             font-size: 20px;
             font-weight: bold;
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: #D2691E;
         }
 
-        .logo {
-            font-family: 'Dancing Script', cursive;
-            font-size: 28px;
-            color: #c7950ab0;
-        }
-
         .nav-links {
             display: flex;
         }
 
+        /* CONTAINER */
         .container {
+            flex: 1;
             max-width: 800px;
             margin: 140px auto 60px;
             padding: 20px;
@@ -62,7 +100,7 @@
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 25px;
+            font-size: 42px;
             color: #D2691E;
             margin-bottom: 20px;
         }
@@ -72,104 +110,127 @@
             line-height: 1.8;
         }
 
-
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            p {
-                font-size: 15px;
-            }
-
-            nav a {
-                font-size: 14px;
-                margin: 0 8px;
-            }
-
+        /* CARD */
+        .about-card {
+            background-color: #f5f5a9;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
         }
 
+        .about-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(210,105,30,0.2);
+        }
+
+        .about-card p {
+            text-align: justify;
+        }
+
+        /* FOOTER */
         footer {
             padding: 100px 20px 60px;
             color: #D2691E;
             text-align: center;
-
             font-size: 12px;
-
         }
 
-        html,
-        body {
-            height: 100%;
-            margin: 0;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            p { font-size: 15px; }
+            nav a { font-size: 14px; margin: 0 8px; }
+            .lang-toggle { top: 12px; right: 12px; }
+            nav { padding-right: 90px; }
         }
-
-       body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-        .container {
-            flex: 1;
-        }  
-  
-        .about-card {
-    background-color: #f5f5a9;
-    border-radius: 16px;
-    padding: 40px;
-    max-width: 700px;
-    margin: 0 auto;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-.about-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(210,105,30,0.2); 
-} 
-.about-card p {
-    text-align: justify;
-}
-
     </style>
-
 </head>
 
 <body>
 
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('ka')">GE</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+
+    <!-- Navigation -->
     <nav>
         <div class="nav-links">
-            <a href="index.html">მთავარი</a>
-            <a href="about.html">ჩემს შესახებ</a>
-            <a href="contact.html">კონტაქტი</a>
+            <a href="Miamain.html" data-ka="მთავარი" data-en="Home">მთავარი</a>
+            <a href="about.html" data-ka="ჩემს შესახებ" data-en="About">ჩემს შესახებ</a>
+            <a href="contact.html" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a>
         </div>
     </nav>
 
     <div class="container">
-        <h1>ჩემს შესახებ</h1> 
+        <h1 data-ka="ჩემს შესახებ" data-en="About Me">ჩემს შესახებ</h1>
+
         <div class="about-card">
+            <p data-ka="გამარჯობა 💛 ხატვა ჩემთვის ერთ-ერთი ყველაზე პოზიტიური და მნიშვნელოვანი პროცესია. ამიტომ თითოეულ ნამუშევარს აქვს თავისი ისტორია და საკუთარი ენერგია. ბავშვობიდან ვიზრდები მხატვრების ოჯახში და სწორედ ეს გარემო გახდა ჩემი ყველაზე დიდი შთაგონება და საფუძველი."
+               data-en="Hello 💛 Painting is one of the most positive and meaningful processes in my life. That's why every artwork carries its own story and energy. I grew up in a family of artists, and this environment became my greatest inspiration and foundation.">
+                გამარჯობა 💛 ხატვა ჩემთვის ერთ-ერთი ყველაზე პოზიტიური და მნიშვნელოვანი პროცესია. ამიტომ თითოეულ ნამუშევარს აქვს თავისი ისტორია და საკუთარი ენერგია. ბავშვობიდან ვიზრდები მხატვრების ოჯახში და სწორედ ეს გარემო გახდა ჩემი ყველაზე დიდი შთაგონება და საფუძველი.
+            </p>
 
-        <p>
-            გამარჯობა 💛
-            ხატვა ჩემთვის ერთ-ერთი ყველაზე პოზიტიური და მნიშვნელოვანი პროცესია. ამიტომ თითოეულ ნამუშევარს აქვს თავისი
-            ისტორია და საკუთარი ენერგია. ბავშვობიდან ვიზრდები მხატვრების ოჯახში და სწორედ ეს გარემო გახდა ჩემი ყველაზე
-            დიდი შთაგონება და საფუძველი. </p>
+            <p data-ka="ჩემს ნამუშევრებში იპოვით როგორც სიმშვიდეს, ისე ძლიერ ემოციას. თუ გსურთ თქვენს სივრცეს მეტი სითბო, დადებითი ენერგია და კარგი განწყობა შემატოთ — სწორ ადგილას ხართ. გისურვებთ სასიამოვნო მოგზაურობას გალერეაში ✨"
+               data-en="In my works you will find both tranquility and strong emotion. If you want to bring more warmth, positive energy, and good vibes to your space — you've come to the right place. Enjoy your journey through the gallery ✨">
+                ჩემს ნამუშევრებში იპოვით როგორც სიმშვიდეს, ისე ძლიერ ემოციას. თუ გსურთ თქვენს სივრცეს მეტი სითბო, დადებითი ენერგია და კარგი განწყობა შემატოთ — სწორ ადგილას ხართ. გისურვებთ სასიამოვნო მოგზაურობას გალერეაში ✨
+            </p>
+        </div>
+    </div>
 
-        <p>
-            ჩემს ნამუშევრებში იპოვით როგორც სიმშვიდეს, ისე ძლიერ ემოციას. თუ გსურთ თქვენს სივრცეს მეტი სითბო, დადებითი ენერგია და კარგი განწყობა შემატოთ — სწორ ადგილას ხართ.
-
-            გისურვებთ სასიამოვნო მოგზაურობას გალერეაში ✨
-        </p>
-    
-
-</div>
-</div>
     <footer>
         <p>© 2026 Mia Art Gallery | Teo Uchaneishvili | All Rights Reserved</p>
     </footer>
 
-</body>
+    <script>
+        let currentLang = 'ka';
 
+const urlLang = new URLSearchParams(window.location.search).get('lang');
+if (urlLang === 'en') {
+    currentLang = 'en';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes("'en'"));
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+        if (el.tagName === 'OPTION') return;
+        el.textContent = el.getAttribute('data-en');
+    });
+    document.querySelectorAll('option[data-en]').forEach(opt => {
+        opt.textContent = opt.getAttribute('data-en');
+    });
+}
+// ← ეს დაამატე: ბმულებს lang=en მიამატე დაუყოვნებლივ
+    document.querySelectorAll('nav a').forEach(a => {
+        const url = new URL(a.href, location.href);
+        url.searchParams.set('lang', 'en');
+        a.href = url.toString();
+    });
+function setLang(lang) {
+    if (lang === currentLang) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes("'" + lang + "'"));
+    });
+    document.querySelectorAll('[data-ka]').forEach(el => {
+        if (el.tagName === 'OPTION') return;
+        const content = el.getAttribute('data-' + lang);
+        if (content) el.textContent = content;
+    });
+    document.querySelectorAll('option[data-ka]').forEach(opt => {
+        opt.textContent = opt.getAttribute('data-' + lang);
+    });
+    document.querySelectorAll('nav a').forEach(a => {
+        const url = new URL(a.href, location.href);
+        url.searchParams.set('lang', lang);
+        a.href = url.toString();
+    });
+}
+    </script>
+
+</body>
 </html>
