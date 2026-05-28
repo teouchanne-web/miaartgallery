@@ -1,16 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="ka">
 <head>
-    <title>Contact Form</title> 
+    <title>Order | Mia Art Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
-        body {
-            font-family: Arial, sans-serif; 
-            background-color: #F5F5DC; 
-             
+        html, body {
+            height: 100%;
+            margin: 0;
         }
- nav {
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #F5F5DC;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* LANG TOGGLE */
+        .lang-toggle {
+            position: fixed;
+            top: 15px;
+            right: 24px;
+            z-index: 200;
+            display: flex;
+            gap: 4px;
+            background: rgba(245,245,220,0.9);
+            border: 1.5px solid #c7950a60;
+            border-radius: 30px;
+            padding: 4px 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            color: #c7950ab0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            transition: 0.25s;
+            letter-spacing: 0.05em;
+        }
+
+        .lang-btn.active {
+            background-color: #D2691E;
+            color: #fff;
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: #D2691E;
+        }
+
+        /* NAV */
+        nav {
             position: fixed;
             top: 0;
             width: 100%;
@@ -32,23 +80,40 @@
             font-size: 20px;
             font-weight: bold;
             font-family: 'Raleway', sans-serif;
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: #D2691E;
         }
+
+        /* FORM */
+        main {
+            flex: 1;
+        }
+
         form {
             background-color: white;
-            padding: 24px;
+            padding: 32px;
             border-radius: 12px;
             width: 400px;
-            margin: 180px auto;
+            margin: 180px auto 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #5a3e2b;
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
             margin-bottom: 6px;
             font-weight: bold;
+            color: #5a3e2b;
         }
 
         input, select, textarea {
@@ -57,85 +122,160 @@
             margin-bottom: 16px;
             border: 1px solid #ccc;
             border-radius: 6px;
+            font-family: 'Raleway', sans-serif;
+            box-sizing: border-box;
         }
 
         button {
             background-color: #5a3e2b;
-            color: #c7950ab0;
+            color: #f0c040;
             padding: 12px 24px;
             border: none;
             border-radius: 6px;
-            cursor: pointer; 
-                transition: 0.3s; /* ← დაამატე */
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Raleway', sans-serif;
+            font-size: 15px;
+            transition: 0.3s;
+        }
 
-        }   
+        button:hover {
+            background-color: #D2691E;
+            transform: scale(1.05);
+            color: white;
+        }
 
-         button:hover {
-    background-color: #F5F5DC;
-    transform: scale(1.08);
-}
-h2 {
-    color:#5a3e2b;
-} 
+        /* FOOTER */
+        footer {
+            padding: 40px 20px 30px;
+            color: #D2691E;
+            text-align: center;
+            font-size: 12px;
+        }
 
-label{
-    color:#5a3e2b;
-} 
-button{
-    font-weight:bold;
-} 
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            form {
+                width: 90%;
+                margin: 120px auto 40px;
+            }
 
-    footer p {
-    margin: 0 auto;
-    text-align: center;
-} 
-footer {
-    padding: 100px 20px 60px; 
-    color: #D2691E;
-} 
-html, body { height: 100%; margin: 0; } body { display: flex; flex-direction: column; } main { flex: 1; }
+            nav a {
+                font-size: 14px;
+                margin: 0 8px;
+            }
 
+            .lang-toggle {
+                top: 12px;
+                right: 12px;
+            }
+
+            nav {
+                padding-right: 90px;
+            }
+        }
     </style>
 </head>
-<body> 
 
-     <nav>
+<body>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('ka')">GE</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
         <div class="nav-links">
-            <a href="Miamain.html">მთავარი</a>
-            <a href="about.html">ჩემს შესახებ</a>
-            
-            <a href="contact.html">კონტაქტი</a>
-        </div> 
+            <a href="Miamain.html" data-ka="მთავარი" data-en="Home">მთავარი</a>
+            <a href="about.html" data-ka="ჩემს შესახებ" data-en="About">ჩემს შესახებ</a>
+            <a href="contact.html" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a>
+        </div>
+    </nav>
 
-   
-    </nav> 
-   <main>
+    <main>
+        <form action="https://formspree.io/f/mojrzppg" method="POST">
 
-    <form action="https://formspree.io/f/mojrzppg" method="POST">
-        <h2>შეკვეთის ფორმა</h2>
+            <h2 data-ka="შეკვეთის ფორმა" data-en="Order Form">შეკვეთის ფორმა</h2>
 
-        <label>სახელი და გვარი</label>
-<input type="text" name="name" placeholder="">
+            <label data-ka="სახელი და გვარი" data-en="Full Name">სახელი და გვარი</label>
+            <input type="text" name="name" placeholder="">
 
-<label>ელ.ფოსტა</label>
-<input type="email" name="email" placeholder="">
+            <label data-ka="ელ.ფოსტა" data-en="Email">ელ.ფოსტა</label>
+            <input type="email" name="email" placeholder="">
 
-<label>ტელეფონის ნომერი</label>
-<input type="text" name="phone" placeholder="">
+            <label data-ka="ტელეფონის ნომერი" data-en="Phone Number">ტელეფონის ნომერი</label>
+            <input type="text" name="phone" placeholder="">
 
-<label>ნახატის კოდი</label>
-<input type="text" name="painting_code" placeholder="გთხოვთ მიუთითოთ ნახატის კოდი">
+            <label data-ka="ნახატის კოდი" data-en="Painting Code">ნახატის კოდი</label>
+            <input type="text" name="painting_code"
+                   id="painting-input"
+                   data-placeholder-ka="გთხოვთ მიუთითოთ ნახატის კოდი"
+                   data-placeholder-en="Please enter the painting code"
+                   placeholder="გთხოვთ მიუთითოთ ნახატის კოდი">
 
-        
+            <label data-ka="მესიჯი" data-en="Message">მესიჯი</label>
+            <textarea rows="4" name="message" placeholder="Type message..."></textarea>
 
-        <label>მესიჯი </label>
-        <textarea rows="4" name="message" placeholder="Type message..."></textarea>
-        <button type="submit">გაგზავნა</button>
-    </form> 
+            <button type="submit" data-ka="გაგზავნა" data-en="Send">გაგზავნა</button>
+
+        </form>
     </main>
-      <footer>
-        <p>©  2026 Mia Art Gallery | Teo Uchaneishvili | All Rights Reserved </p> 
-        
+
+    <footer>
+        <p>© 2026 Mia Art Gallery | Teo Uchaneishvili | All Rights Reserved</p>
     </footer>
+
+    <script>
+       let currentLang = 'ka';
+
+const urlLang = new URLSearchParams(window.location.search).get('lang');
+if (urlLang === 'en') {
+    currentLang = 'en';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes("'en'"));
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+        if (el.tagName === 'OPTION') return;
+        el.textContent = el.getAttribute('data-en');
+    });
+    document.querySelectorAll('option[data-en]').forEach(opt => {
+        opt.textContent = opt.getAttribute('data-en');
+    });
+    // ← ეს აკლდა
+    document.getElementById('painting-input').placeholder = 'Please enter the painting code';
+    document.querySelectorAll('nav a').forEach(a => {
+        const url = new URL(a.href, location.href);
+        url.searchParams.set('lang', 'en');
+        a.href = url.toString();
+    });
+}
+
+function setLang(lang) {
+    if (lang === currentLang) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes("'" + lang + "'"));
+    });
+    document.querySelectorAll('[data-ka]').forEach(el => {
+        if (el.tagName === 'OPTION') return;
+        const content = el.getAttribute('data-' + lang);
+        if (content) el.textContent = content;
+    });
+    document.querySelectorAll('option[data-ka]').forEach(opt => {
+        opt.textContent = opt.getAttribute('data-' + lang);
+    });
+    const ph = document.getElementById('painting-input').getAttribute('data-placeholder-' + lang);
+    if (ph) document.getElementById('painting-input').placeholder = ph;
+    document.querySelectorAll('nav a').forEach(a => {
+        const url = new URL(a.href, location.href);
+        url.searchParams.set('lang', lang);
+        a.href = url.toString();
+    });
+}
+    </script>
+
 </body>
 </html>
