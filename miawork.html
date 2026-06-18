@@ -1,658 +1,667 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ka">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artworks | Mia Art Gallery</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artworks | Mia Art Gallery</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Raleway:wght@300;400;600&display=swap"
+      rel="stylesheet" />
 
-<style>
+    <style>
+      body {
+        margin: 0;
+        background: #f5f5dc;
+        font-family: "Raleway", sans-serif;
+      }
 
-body{
-    margin:0;
-    background:#F5F5DC;
-    font-family:'Raleway',sans-serif;
-}
+      /* ===== NAV ===== */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 200;
 
-/* ===== NAV ===== */
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:200;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+        padding: 15px 20px;
+        background: rgba(245, 245, 220, 0.92);
+        backdrop-filter: blur(10px);
+        box-sizing: border-box;
+      }
 
-    padding:15px 20px;
-    background:rgba(245,245,220,0.92);
-    backdrop-filter:blur(10px);
-    box-sizing:border-box;
-}
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
 
-.nav-links{
-    display:flex;
-    gap:18px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
+      .nav-links a {
+        text-decoration: none;
+        color: #c7950ab0;
+        font-size: 18px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
 
-.nav-links a{
-    text-decoration:none;
-    color:#c7950ab0;
-    font-size:18px;
-    font-weight:bold;
-    transition:0.3s;
-}
+      .nav-links a:hover {
+        color: #d2691e;
+      }
 
-.nav-links a:hover{
-    color:#D2691E;
-}
+      /* ===== LANGUAGE TOGGLE ===== */
+      .lang-toggle {
+        display: flex;
+        gap: 4px;
 
-/* ===== LANGUAGE TOGGLE ===== */
-.lang-toggle{
-    display:flex;
-    gap:4px;
+        background: rgba(245, 245, 220, 0.95);
+        border: 1.5px solid #c7950a60;
+        border-radius: 30px;
+        padding: 4px 6px;
 
-    background:rgba(245,245,220,0.95);
-    border:1.5px solid #c7950a60;
-    border-radius:30px;
-    padding:4px 6px;
+        position: fixed;
+        top: 15px;
+        right: 24px;
+        z-index: 300;
+      }
 
-    position:fixed;
-    top:15px;
-    right:24px;
-    z-index:300;
-}
+      .lang-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
 
-.lang-btn{
-    background:none;
-    border:none;
-    cursor:pointer;
+        font-size: 13px;
+        font-weight: bold;
+        color: #c7950ab0;
 
-    font-size:13px;
-    font-weight:bold;
-    color:#c7950ab0;
+        padding: 5px 12px;
+        border-radius: 20px;
+        transition: 0.25s;
+      }
 
-    padding:5px 12px;
-    border-radius:20px;
-    transition:0.25s;
-}
+      .lang-btn.active {
+        background: #d2691e;
+        color: #fff;
+      }
 
-.lang-btn.active{
-    background:#D2691E;
-    color:#fff;
-}
+      .lang-btn:hover:not(.active) {
+        color: #d2691e;
+      }
 
-.lang-btn:hover:not(.active){
-    color:#D2691E;
-}
+      /* ===== TITLE ===== */
+      .gallery-title {
+        text-align: center;
+        margin-top: 120px;
+        font-size: 42px;
+        font-family: "Dancing Script", cursive;
+        color: #5a3e2b;
+      }
 
-/* ===== TITLE ===== */
-.gallery-title{
-    text-align:center;
-    margin-top:120px;
-    font-size:42px;
-    font-family:'Dancing Script',cursive;
-    color:#5a3e2b;
-}
+      /* ===== GALLERY ===== */
+      .gallery {
+        width: 90%;
+        margin: 40px auto 60px;
 
-/* ===== GALLERY ===== */
-.gallery{
-    width:90%;
-    margin:40px auto 60px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* მაქს 3 სვეტი */
+        gap: 30px;
+      }
 
-    display:grid;
-    grid-template-columns: repeat(3, 1fr); /* მაქს 3 სვეტი */
-    gap:30px;
-}
+      .art-card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
 
-.art-card{
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
+      .art-card img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        cursor: pointer;
+      }
 
-.art-card img{
-    width:100%;
-    height:320px;
-    object-fit:cover;
-    cursor:pointer;
-}
+      .art-info {
+        padding: 20px;
+        text-align: center;
+      }
 
-.art-info{
-    padding:20px;
-    text-align:center;
-}
+      .order-btn {
+        display: inline-block;
+        margin-top: 10px;
 
-.order-btn{
-    display:inline-block;
-    margin-top:10px;
+        background: #f0c040;
+        color: #1a1a1a;
 
-    background:#f0c040;
-    color:#1a1a1a;
+        padding: 8px 18px;
+        border-radius: 20px;
 
-    padding:8px 18px;
-    border-radius:20px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s;
+      }
 
-    font-weight:bold;
-    text-decoration:none;
-    transition:0.3s;
-}
+      .order-btn:hover {
+        background: #d2691e;
+        color: #fff;
+      }
 
-.order-btn:hover{
-    background:#D2691E;
-    color:#fff;
-}
+      /* ===== LIGHTBOX ===== */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
 
-/* ===== LIGHTBOX ===== */
-.lightbox{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.9);
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-}
+      .lightbox.active {
+        display: flex;
+      }
 
-.lightbox.active{
-    display:flex;
-}
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90vh;
+      }
 
-.lightbox img{
-    max-width:90%;
-    max-height:90vh;
-}
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+      }
 
-.lightbox-close{
-    position:absolute;
-    top:20px;
-    right:25px;
-    font-size:40px;
-    color:white;
-    cursor:pointer;
-}
+      /* ===== FOOTER ===== */
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: #d2691e;
+        font-size: 12px;
+      }
 
-/* ===== FOOTER ===== */
-footer{
-    text-align:center;
-    padding:40px 20px;
-    color:#D2691E;
-    font-size:12px;
-}
+      footer br {
+        display: none;
+      }
 
-footer br{
-    display:none;
-}
+      /* ===== MOBILE ===== */
+      @media (max-width: 768px) {
+        .gallery {
+          grid-template-columns: repeat(2, 1fr); /* მობილურზე 2 სვეტი */
+        }
+      }
 
-/* ===== MOBILE ===== */
-@media(max-width:768px){ 
+      @media (max-width: 480px) {
+        .gallery {
+          grid-template-columns: 1fr; /* პატარა ეკრანზე 1 სვეტი */
+        }
+      }
 
-    .gallery{
-        grid-template-columns: repeat(2, 1fr); /* მობილურზე 2 სვეტი */
-    }
-}
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 12px;
+      }
 
-@media(max-width:480px){
-    .gallery{
-        grid-template-columns: 1fr; /* პატარა ეკრანზე 1 სვეტი */
-    }
-}
+      .lang-toggle {
+        position: static;
+      }
 
-    nav{
-        flex-direction:column;
-        gap:10px;
-        padding-bottom:12px;
-    }
+      .gallery-title {
+        font-size: 30px;
+        margin-top: 160px;
+      }
 
-    .lang-toggle{
-        position:static;
-    }
+      footer br {
+        display: inline;
+      }
 
-    .gallery-title{
-        font-size:30px;
-        margin-top:160px;
-    }
+      /* ===== SLIDER ===== */
+      .slider-wrap {
+        position: relative;
+        overflow: hidden;
+      }
 
-    footer br{
-        display:inline;
-    }
+      .slider-track {
+        display: flex;
+        overflow-x: hidden; /* ← სქროლი ჩართე */
+        scroll-snap-type: x mandatory;
+      }
 
-    /* ===== SLIDER ===== */
-.slider-wrap {
-    position: relative;
-    overflow: hidden;
-}
+      .slider-track img {
+        scroll-snap-align: start; /* ← ყველა img-ს */
+        min-width: 100%;
+        height: 320px;
+        object-fit: cover;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
 
-.slider-track {
-    display: flex;
-    overflow-x: hidden;   /* ← სქროლი ჩართე */
-    scroll-snap-type: x mandatory;
-}
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.45);
+        color: white;
+        border: none;
+        font-size: 22px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
 
-.slider-track img {
-    scroll-snap-align: start;  /* ← ყველა img-ს */
-    min-width: 100%;
-    height: 320px;
-    object-fit: cover;
-    cursor: pointer;
-    flex-shrink: 0;
-}
+      .slider-btn:hover {
+        background: rgba(210, 105, 30, 0.85);
+      }
 
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.45);
-    color: white;
-    border: none;
-    font-size: 22px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-}
+      .slider-btn.prev {
+        left: 8px;
+      }
+      .slider-btn.next {
+        right: 8px;
+      }
 
-.slider-btn:hover {
-    background: rgba(210,105,30,0.85);
-}
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 0 4px;
+      }
 
-.slider-btn.prev { left: 8px; }
-.slider-btn.next { right: 8px; }
+      .slider-dots span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ccc;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
 
-.slider-dots {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    padding: 8px 0 4px;
-}
+      .slider-dots span.active {
+        background: #d2691e;
+      }
+    </style>
+  </head>
 
-.slider-dots span {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #ccc;
-    cursor: pointer;
-    transition: background 0.2s;
-}
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-links">
+        <a href="Miamain.html" data-ka="მთავარი" data-en="Home">მთავარი</a>
 
-.slider-dots span.active {
-    background: #D2691E;
-}
+        <a href="about.html" data-ka="ჩემს შესახებ" data-en="About"
+          >ჩემს შესახებ</a
+        >
 
-</style>
-</head>
+        <a href="contact.html" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a>
+      </div>
 
-<body>
-
-<!-- NAV -->
-<nav>
-    <div class="nav-links">
-        <a href="index.html"
-           data-ka="მთავარი"
-           data-en="Home">მთავარი</a>
-
-        <a href="about.html"
-           data-ka="ჩემს შესახებ"
-           data-en="About">ჩემს შესახებ</a>
-
-        <a href="contact.html"
-           data-ka="კონტაქტი"
-           data-en="Contact">კონტაქტი</a>
-    </div>
-
-    <div class="lang-toggle">
+      <div class="lang-toggle">
         <button class="lang-btn" onclick="setLang('ka')">GE</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<!-- TITLE -->
-<h2 class="gallery-title"
-    data-ka="ნამუშევრები"
-    data-en="Artworks">
-    ნამუშევრები
-</h2>
+    <!-- TITLE -->
+    <h2 class="gallery-title" data-ka="ნამუშევრები" data-en="Artworks">
+      ნამუშევრები
+    </h2>
 
-<!-- GALLERY -->
-<div class="gallery">
-
-    <!-- CARD 1 -->
- <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-            <img src="Watcher.jpeg"     onclick="openLightbox(this.src)">
-            <img src="watcher2.jpeg"   onclick="openLightbox(this.src)">
-        </div>
-        <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div>
-    </div>
-    <div class="art-info">
-        <h3>"Watcher"</h3>
-        <p data-ka="კოდი 001" data-en="Code 001">კოდი 001</p>
-        <p data-ka="90x60 აკრილი ტილოზე" data-en="90x60 Acrylic on canvas"></p>
-        <a class="order-btn" href="contactt.html?code=001"
-           data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-    </div>
-</div>
-
-    <!-- CARD 2 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-        <img src="Guardin.jpeg" onclick="openLightbox(this.src)"> 
-        <img src="Guardin2.jpeg" onclick="openLightbox(this.src)"> 
-        </div>  
-           <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div>
-    </div>
-        <div class="art-info">
-            <h3>"Guardin"</h3>
-            <p data-ka="კოდი 002" data-en="Code 002">კოდი 002</p> 
-            <p data-ka="90x60 აკრილი ტილოზე" data-en="90x60 Acrylic on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=002"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-        <img src="Fireflies Gathering Night.jpeg" onclick="openLightbox(this.src)"> 
-        <img src="Fireflies Gathering Night2.jpeg" onclick="openLightbox(this.src)"> 
-        </div> 
-        <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div>
-    </div>
-        <div class="art-info">
-            <h3>"Fireflies Gathering Night"</h3>
-            <p data-ka="კოდი 003" data-en="Code 003">კოდი 003</p>
-            <p data-ka="50x60 აკრილი ტილოზე" data-en="50x60 Acrylic on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=003"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div> 
-
-    <!-- CARD 4 -->
+    <!-- GALLERY -->
+    <div class="gallery">
+      <!-- CARD 1 -->
       <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-        <img src="Love Guardin.jpeg" onclick="openLightbox(this.src)"> 
-        <img src="Love Guardin2.jpeg" onclick="openLightbox(this.src)"> 
-        </div> 
-        <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Watcher.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Watcher2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+          <div class="slider-dots">
             <span class="active"></span>
             <span></span>
+          </div>
         </div>
+        <div class="art-info">
+          <h3>"Watcher"</h3>
+          <p data-ka="კოდი 001" data-en="Code 001">კოდი 001</p>
+          <p
+            data-ka="90x60 აკრილი ტილოზე"
+            data-en="90x60 Acrylic on canvas"></p>
+          <p data-ka="ფასი 700 ₾ " data-en="Price: 700 GEL"></p>
+
+          <a
+            class="order-btn"
+            href="contactt.html?code=001"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Guardin.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Guardin2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="art-info">
+          <h3>"Guardin"</h3>
+          <p data-ka="კოდი 002" data-en="Code 002">კოდი 002</p>
+          <p
+            data-ka="90x60 აკრილი ტილოზე"
+            data-en="90x60 Acrylic on canvas"></p>
+          <a
+            class="order-btn"
+            href="contactt.html?code=002"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img
+              src="Fireflies Gathering Night.jpeg"
+              onclick="openLightbox(this.src)" />
+            <img
+              src="Fireflies Gathering Night2.jpeg"
+              onclick="openLightbox(this.src)" />
+          </div>
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="art-info">
+          <h3>"Fireflies Gathering Night"</h3>
+          <p data-ka="კოდი 003" data-en="Code 003">კოდი 003</p>
+          <p
+            data-ka="50x60 აკრილი ტილოზე"
+            data-en="50x60 Acrylic on canvas"></p>
+          <a
+            class="order-btn"
+            href="contactt.html?code=003"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="My Misty Mind.jpeg" onclick="openLightbox(this.src)" />
+            <img src="mymistymind2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="art-info">
+          <h3>"My Misty Mind"</h3>
+          <p data-ka="კოდი 004" data-en="Code 004">კოდი 004</p>
+          <p
+            data-ka="100x70 აკრილი ტილოზე"
+            data-en="100x70 Acrylic on canvas"></p>
+          <a
+            class="order-btn"
+            href="contactt.html?code=004"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Where Fear Ends.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Where Fear Ends2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="art-info">
+          <h3>"Where Fear Ends"</h3>
+          <p data-ka="კოდი 005" data-en="Code 005">კოდი 005</p>
+          <p
+            data-ka="50x60 აკრილი, გრუნტი ტილოზე"
+            data-en="50x60 Acrylic Gesso on canvas"></p>
+          <a
+            class="order-btn"
+            href="contactt.html?code=005"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img
+              src="Cold outside Loud inside.jpeg"
+              onclick="openLightbox(this.src)" />
+            <img
+              src="Cold outside Loud inside2.jpeg"
+              onclick="openLightbox(this.src)" />
+          </div>
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="art-info">
+          <h3>"Cold outside Loud inside"</h3>
+          <p data-ka="კოდი 006" data-en="Code 006">კოდი 006</p>
+          <p
+            data-ka="50x60 აკრილი, გრუნტი ტილოზე"
+            data-en="50x60 Acrylic Gesso on canvas"></p>
+          <a
+            class="order-btn"
+            href="contactt.html?code=006"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+      <!-- CARD 7 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Fractured Mind.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Fractured Mind2.jpeg " onclick="openLightbox(this.src)" />
+          </div>
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="art-info">
+          <h3>"Fractured Mind"</h3>
+          <p data-ka="კოდი 007" data-en="Code 007">კოდი 007</p>
+          <p
+            data-ka="80x60 აკრილი ტილოზე"
+            data-en="80x60 Acrylic on canvas"></p>
+
+          <a
+            class="order-btn"
+            href="contactt.html?code=007"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
     </div>
-        <div class="art-info"> 
 
-            <h3>"Love Guardin"</h3>
-            <p data-ka="კოდი 004" data-en="Code 004">კოდი 004</p>
-            <p data-ka="90x60 აკრილი ტილოზე" data-en="90x60 Acrylic on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=004"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div> 
-
-    <!-- CARD 5 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-            <img src="My Misty Mind.jpeg"     onclick="openLightbox(this.src)">
-            <img src="mymistymind2.jpeg"   onclick="openLightbox(this.src)">
-        </div>
-        <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div> 
-          </div>
-
-        <div class="art-info">
-            <h3>"My Misty Mind"</h3>
-            <p data-ka="კოდი 005" data-en="Code 005">კოდი 005</p>
-            <p data-ka="100x70 აკრილი ტილოზე" data-en="100x70 Acrylic on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=005"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div> 
-        <!-- CARD 6 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-        <img src="I came by.jpeg" onclick="openLightbox(this.src)"> 
-        <img src="I came by2.jpeg" onclick="openLightbox(this.src)"> 
-</div> 
-<button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div> 
-          </div>
-
-        <div class="art-info">
-            <h3>"I came by"</h3>
-            <p data-ka="კოდი 006" data-en="Code 006">კოდი 006</p>
-            <p data-ka="80x60 აკრილი, გრუნტი ტილოზე" data-en="80x60 Acrylic Gesso on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=006"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div> 
-     <!-- CARD 7 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-        <img src="Where Fear Ends.jpeg" onclick="openLightbox(this.src)"> 
-         <img src="Where Fear Ends2.jpeg" onclick="openLightbox(this.src)"> 
-</div>
-<button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div> 
-          </div>
-        <div class="art-info">
-            <h3>"Where Fear Ends"</h3>
-            <p data-ka="კოდი 007" data-en="Code 007">კოდი 007</p>
-            <p data-ka="50x60 აკრილი, გრუნტი ტილოზე" data-en="50x60 Acrylic Gesso on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=007"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div> 
-
-         <!-- CARD 8 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">
-        <img src="Days.jpeg" onclick="openLightbox(this.src)"> 
-         <img src="Days2.jpeg" onclick="openLightbox(this.src)"> 
-        </div>   
-
-        <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div> 
-          </div>
-        <div class="art-info">
-            <h3>"Days"</h3>
-            <p data-ka="კოდი 008" data-en="Code 008">კოდი 003</p>
-            <p data-ka="50x60 აკრილი ტილოზე" data-en="50x60 Acrylic on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=008"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div>  
-
-
-
-          <!-- CARD 9 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track"> 
-
-        <img src="Cold outside Loud inside.jpeg" onclick="openLightbox(this.src)"> 
-           <img src="Cold outside Loud inside2.jpeg" onclick="openLightbox(this.src)"> 
-        </div> 
-            <button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div> 
-          </div>
-        <div class="art-info">
-            <h3>"Cold outside Loud inside"</h3>
-            <p data-ka="კოდი 009" data-en="Code 009">კოდი 003</p>
-            <p data-ka="50x60 აკრილი, გრუნტი ტილოზე" data-en="50x60 Acrylic Gesso on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=009"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
-    </div> 
-      <!-- CARD 10 -->
-    <div class="art-card">
-    <div class="slider-wrap">
-        <div class="slider-track">  
-
-        <img src="Fractured Mind.jpeg" onclick="openLightbox(this.src)"> 
-        <img src="Fractured Mind2.jpeg " onclick="openLightbox(this.src)"> 
-         </div> 
-<button class="slider-btn prev" onclick="slide(this,-1)">&#8249;</button>
-        <button class="slider-btn next" onclick="slide(this, 1)">&#8250;</button>
-        <div class="slider-dots">
-            <span class="active"></span>
-            <span></span>
-        </div> 
-          </div>
-
-        <div class="art-info">
-            <h3>"Fractured Mind"</h3>
-            <p data-ka="კოდი 010" data-en="Code 010">კოდი 003</p>
-            <p data-ka="80x60 აკრილი ტილოზე" data-en="80x60 Acrylic on canvas"></p>
-            <a class="order-btn" href="contactt.html?code=010"
-               data-ka="შეძენა →" data-en="Purchase →">შეძენა →</a>
-        </div>
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close" onclick="closeLightbox()">×</span>
+      <img id="lightbox-img" />
     </div>
-</div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox()">×</span>
-    <img id="lightbox-img">
-</div>
+    <!-- FOOTER -->
+    <footer>
+      © 2026 Mia Art Gallery<br />Teo Uchaneishvili | All Rights Reserved
+    </footer>
 
-<!-- FOOTER -->
-<footer>
-    © 2026 Mia Art Gallery<br>Teo Uchaneishvili | All Rights Reserved
-</footer>
+    <script>
+      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      let currentLang = urlLang || localStorage.getItem("lang") || "ka";
 
-<script>
-
-const urlLang = new URLSearchParams(window.location.search).get('lang');
-let currentLang = urlLang || localStorage.getItem('lang') || 'ka';
-
-function updateLinks(lang) {
-    document.querySelectorAll('a').forEach(a => {
-        try {
+      function updateLinks(lang) {
+        document.querySelectorAll("a").forEach((a) => {
+          try {
             const url = new URL(a.href, location.href);
-            url.searchParams.set('lang', lang);
+            url.searchParams.set("lang", lang);
             a.href = url.toString();
-        } catch(e) {}
-    });
-}
+          } catch (e) {}
+        });
+      }
 
-function setLang(lang) {
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-    document.documentElement.lang = lang;
+      function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem("lang", lang);
+        document.documentElement.lang = lang;
 
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-    window.history.replaceState({}, '', url);
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", lang);
+        window.history.replaceState({}, "", url);
 
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active',
-            btn.getAttribute('onclick').includes("'" + lang + "'"));
-    });
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.toggle(
+            "active",
+            btn.getAttribute("onclick").includes("'" + lang + "'"),
+          );
+        });
 
-    document.querySelectorAll('[data-ka]').forEach(el => {
-        const text = el.getAttribute('data-' + lang);
-        if (text) el.textContent = text;
-    });
+        document.querySelectorAll("[data-ka]").forEach((el) => {
+          const text = el.getAttribute("data-" + lang);
+          if (text) el.textContent = text;
+        });
 
-    updateLinks(lang);
-}
+        updateLinks(lang);
+      }
 
-setLang(currentLang);
+      setLang(currentLang);
 
-function openLightbox(src){
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('active');
-}
+      function openLightbox(src) {
+        document.getElementById("lightbox-img").src = src;
+        document.getElementById("lightbox").classList.add("active");
+      }
 
-function closeLightbox(){
-    document.getElementById('lightbox').classList.remove('active');
-}
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("active");
+      }
 
-document.getElementById('lightbox').onclick = e => {
-    if(e.target === e.currentTarget) closeLightbox();
-};
-function slide(btn, dir) {
-    const wrap  = btn.closest('.slider-wrap');
-    const track = wrap.querySelector('.slider-track');
-    const imgs  = track.querySelectorAll('img');
-    const dots  = wrap.querySelectorAll('.slider-dots span');
-    const total = imgs.length;
-    const w     = wrap.offsetWidth;
+      document.getElementById("lightbox").onclick = (e) => {
+        if (e.target === e.currentTarget) closeLightbox();
+      };
+      function slide(btn, dir) {
+        const wrap = btn.closest(".slider-wrap");
+        const track = wrap.querySelector(".slider-track");
+        const imgs = track.querySelectorAll("img");
+        const dots = wrap.querySelectorAll(".slider-dots span");
+        const total = imgs.length;
+        const w = wrap.offsetWidth;
 
-    let cur = Math.round(track.scrollLeft / w);
-    cur = (cur + dir + total) % total;
+        let cur = Math.round(track.scrollLeft / w);
+        cur = (cur + dir + total) % total;
 
-    track.scrollTo({ left: cur * w, behavior: 'smooth' });
-    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
-}
+        track.scrollTo({ left: cur * w, behavior: "smooth" });
+        dots.forEach((d, i) => d.classList.toggle("active", i === cur));
+      }
 
-document.querySelectorAll('.slider-dots span').forEach((dot, i) => {
-    dot.addEventListener('click', function () {
-        const wrap  = this.closest('.slider-wrap');
-        const track = wrap.querySelector('.slider-track');
-        const dots  = wrap.querySelectorAll('.slider-dots span');
-        const w     = wrap.offsetWidth;
+      document.querySelectorAll(".slider-dots span").forEach((dot, i) => {
+        dot.addEventListener("click", function () {
+          const wrap = this.closest(".slider-wrap");
+          const track = wrap.querySelector(".slider-track");
+          const dots = wrap.querySelectorAll(".slider-dots span");
+          const w = wrap.offsetWidth;
 
-        track.scrollTo({ left: i * w, behavior: 'smooth' });
-        dots.forEach((d, j) => d.classList.toggle('active', j === i));
-    });
-});
-</script>
-
-</body>
+          track.scrollTo({ left: i * w, behavior: "smooth" });
+          dots.forEach((d, j) => d.classList.toggle("active", j === i));
+        });
+      });
+    </script>
+  </body>
 </html>
