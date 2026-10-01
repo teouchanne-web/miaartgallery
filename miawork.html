@@ -106,7 +106,7 @@
         margin: 40px auto 60px;
 
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* მაქს 3 სვეტი */
+        grid-template-columns: repeat(3, 1fr);
         gap: 30px;
       }
 
@@ -148,6 +148,7 @@
         background: #d2691e;
         color: #fff;
       }
+
       .sold-btn {
         display: inline-block;
         margin-top: 10px;
@@ -202,38 +203,6 @@
         display: none;
       }
 
-      /* ===== MOBILE ===== */
-      @media (max-width: 768px) {
-        .gallery {
-          grid-template-columns: repeat(2, 1fr); /* მობილურზე 2 სვეტი */
-        }
-      }
-
-      @media (max-width: 480px) {
-        .gallery {
-          grid-template-columns: 1fr; /* პატარა ეკრანზე 1 სვეტი */
-        }
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 10px;
-        padding-bottom: 12px;
-      }
-
-      .lang-toggle {
-        position: static;
-      }
-
-      .gallery-title {
-        font-size: 30px;
-        margin-top: 160px;
-      }
-
-      footer br {
-        display: inline;
-      }
-
       /* ===== SLIDER ===== */
       .slider-wrap {
         position: relative;
@@ -242,12 +211,12 @@
 
       .slider-track {
         display: flex;
-        overflow-x: hidden; /* ← სქროლი ჩართე */
+        overflow-x: hidden;
         scroll-snap-type: x mandatory;
       }
 
       .slider-track img {
-        scroll-snap-align: start; /* ← ყველა img-ს */
+        scroll-snap-align: start;
         min-width: 100%;
         height: 320px;
         object-fit: cover;
@@ -282,6 +251,7 @@
       .slider-btn.prev {
         left: 8px;
       }
+
       .slider-btn.next {
         right: 8px;
       }
@@ -305,6 +275,38 @@
       .slider-dots span.active {
         background: #d2691e;
       }
+
+      /* ===== MOBILE ===== */
+      @media (max-width: 768px) {
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        nav {
+          flex-direction: column;
+          gap: 10px;
+          padding-bottom: 12px;
+        }
+
+        .lang-toggle {
+          position: static;
+        }
+
+        .gallery-title {
+          font-size: 30px;
+          margin-top: 160px;
+        }
+
+        footer br {
+          display: inline;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
 
@@ -314,11 +316,13 @@
       <div class="nav-links">
         <a href="index.html" data-ka="მთავარი" data-en="Home">მთავარი</a>
 
-        <a href="about.html" data-ka="ჩემს შესახებ" data-en="About"
-          >ჩემს შესახებ</a
-        >
+        <a href="about.html" data-ka="ჩემს შესახებ" data-en="About">
+          ჩემს შესახებ
+        </a>
 
-        <a href="contact.html" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a>
+        <a href="contact.html" data-ka="კონტაქტი" data-en="Contact">
+          კონტაქტი
+        </a>
       </div>
 
       <div class="lang-toggle">
@@ -341,24 +345,31 @@
             <img src="Watcher.jpeg" onclick="openLightbox(this.src)" />
             <img src="Watcher2.jpeg" onclick="openLightbox(this.src)" />
           </div>
+
           <button class="slider-btn prev" onclick="slide(this, -1)">
             &#8249;
           </button>
+
           <button class="slider-btn next" onclick="slide(this, 1)">
             &#8250;
           </button>
+
           <div class="slider-dots">
             <span class="active"></span>
             <span></span>
           </div>
         </div>
+
         <div class="art-info">
           <h3>"Watcher"</h3>
+
           <p data-ka="კოდი 001" data-en="Code 001">კოდი 001</p>
+
           <p
             data-ka="90x60 აკრილი ტილოზე"
             data-en="90x60 Acrylic on canvas"></p>
-          <p data-ka="ფასი 700 ₾ " data-en="Price: 700 GEL"></p>
+
+          <p data-ka="ფასი 700 ₾" data-en="Price: 700 GEL"></p>
 
           <a
             class="order-btn"
@@ -377,24 +388,32 @@
             <img src="Guardin.jpeg" onclick="openLightbox(this.src)" />
             <img src="Guardin2.jpeg" onclick="openLightbox(this.src)" />
           </div>
+
           <button class="slider-btn prev" onclick="slide(this, -1)">
             &#8249;
           </button>
+
           <button class="slider-btn next" onclick="slide(this, 1)">
             &#8250;
           </button>
+
           <div class="slider-dots">
             <span class="active"></span>
             <span></span>
           </div>
         </div>
+
         <div class="art-info">
           <h3>"Guardin"</h3>
+
           <p data-ka="კოდი 002" data-en="Code 002">კოდი 002</p>
+
           <p
             data-ka="90x60 აკრილი ტილოზე"
             data-en="90x60 Acrylic on canvas"></p>
-          <p data-ka="ფასი 450 ₾ " data-en="Price: 450 GEL"></p>
+
+          <p data-ka="ფასი 450 ₾" data-en="Price: 450 GEL"></p>
+
           <a
             class="order-btn"
             href="contactt.html?code=002"
@@ -416,24 +435,31 @@
               src="Fireflies Gathering Night2.jpeg"
               onclick="openLightbox(this.src)" />
           </div>
+
           <button class="slider-btn prev" onclick="slide(this, -1)">
             &#8249;
           </button>
+
           <button class="slider-btn next" onclick="slide(this, 1)">
             &#8250;
           </button>
+
           <div class="slider-dots">
             <span class="active"></span>
             <span></span>
           </div>
         </div>
+
         <div class="art-info">
           <h3>"Fireflies Gathering Night"</h3>
+
           <p data-ka="კოდი 003" data-en="Code 003">კოდი 003</p>
+
           <p
             data-ka="50x60 აკრილი ტილოზე"
             data-en="50x60 Acrylic on canvas"></p>
-          <a class="btn sold-btn" data-ka="გაყიდულია / Sold" data-en="Sold"
+
+          <a class="sold-btn" data-ka="გაყიდულია / Sold" data-en="Sold"
             >გაყიდულია / Sold</a
           >
         </div>
@@ -446,12 +472,15 @@
             <img src="My Misty Mind.jpeg" onclick="openLightbox(this.src)" />
             <img src="mymistymind2.jpeg" onclick="openLightbox(this.src)" />
           </div>
+
           <button class="slider-btn prev" onclick="slide(this, -1)">
             &#8249;
           </button>
+
           <button class="slider-btn next" onclick="slide(this, 1)">
             &#8250;
           </button>
+
           <div class="slider-dots">
             <span class="active"></span>
             <span></span>
@@ -460,11 +489,15 @@
 
         <div class="art-info">
           <h3>"My Misty Mind"</h3>
+
           <p data-ka="კოდი 004" data-en="Code 004">კოდი 004</p>
+
           <p
             data-ka="100x70 აკრილი ტილოზე"
             data-en="100x70 Acrylic on canvas"></p>
-          <p data-ka="ფასი 450 ₾ " data-en="Price: 450 GEL"></p>
+
+          <p data-ka="ფასი 450 ₾" data-en="Price: 450 GEL"></p>
+
           <a
             class="order-btn"
             href="contactt.html?code=004"
@@ -482,24 +515,31 @@
             <img src="Where Fear Ends.jpeg" onclick="openLightbox(this.src)" />
             <img src="Where Fear Ends2.jpeg" onclick="openLightbox(this.src)" />
           </div>
+
           <button class="slider-btn prev" onclick="slide(this, -1)">
             &#8249;
           </button>
+
           <button class="slider-btn next" onclick="slide(this, 1)">
             &#8250;
           </button>
+
           <div class="slider-dots">
             <span class="active"></span>
             <span></span>
           </div>
         </div>
+
         <div class="art-info">
           <h3>"Where Fear Ends"</h3>
+
           <p data-ka="კოდი 005" data-en="Code 005">კოდი 005</p>
+
           <p
             data-ka="50x60 აკრილი, გრუნტი ტილოზე"
             data-en="50x60 Acrylic Gesso on canvas"></p>
-          <a class="btn sold-btn" data-ka="გაყიდულია / Sold" data-en="Sold"
+
+          <a class="sold-btn" data-ka="გაყიდულია / Sold" data-en="Sold"
             >გაყიდულია / Sold</a
           >
         </div>
@@ -516,24 +556,32 @@
               src="Cold outside Loud inside2.jpeg"
               onclick="openLightbox(this.src)" />
           </div>
+
           <button class="slider-btn prev" onclick="slide(this, -1)">
             &#8249;
           </button>
+
           <button class="slider-btn next" onclick="slide(this, 1)">
             &#8250;
           </button>
+
           <div class="slider-dots">
             <span class="active"></span>
             <span></span>
           </div>
         </div>
+
         <div class="art-info">
           <h3>"Cold outside Loud inside"</h3>
+
           <p data-ka="კოდი 006" data-en="Code 006">კოდი 006</p>
+
           <p
             data-ka="50x60 აკრილი, გრუნტი ტილოზე"
             data-en="50x60 Acrylic Gesso on canvas"></p>
-          <p data-ka="ფასი 200 ₾ " data-en="Price: 200 GEL"></p>
+
+          <p data-ka="ფასი 200 ₾" data-en="Price: 200 GEL"></p>
+
           <a
             class="order-btn"
             href="contactt.html?code=006"
@@ -543,6 +591,7 @@
           >
         </div>
       </div>
+
       <!-- CARD 7 -->
       <div class="art-card">
         <div class="slider-wrap">
@@ -550,12 +599,15 @@
             <img src="Fractured Mind.jpeg" onclick="openLightbox(this.src)" />
             <img src="Fractured Mind2.jpeg" onclick="openLightbox(this.src)" />
           </div>
+
           <button class="slider-btn prev" onclick="slide(this, -1)">
             &#8249;
           </button>
+
           <button class="slider-btn next" onclick="slide(this, 1)">
             &#8250;
           </button>
+
           <div class="slider-dots">
             <span class="active"></span>
             <span></span>
@@ -564,12 +616,14 @@
 
         <div class="art-info">
           <h3>"Fractured Mind"</h3>
+
           <p data-ka="კოდი 007" data-en="Code 007">კოდი 007</p>
+
           <p
             data-ka="80x60 აკრილი ტილოზე"
             data-en="80x60 Acrylic on canvas"></p>
-          <p data-ka="ფასი 200 ₾ " data-en="Price: 200 GEL"></p>
-          </p>
+
+          <p data-ka="ფასი 200 ₾" data-en="Price: 200 GEL"></p>
 
           <a
             class="order-btn"
@@ -577,6 +631,208 @@
             data-ka="შეძენა →"
             data-en="Purchase →"
             >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 8 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Reflection.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Reflection2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="art-info">
+          <h3>"Reflection"</h3>
+
+          <p data-ka="კოდი 008" data-en="Code 008">კოდი 008</p>
+
+          <p
+            data-ka="90x60 აკრილი ტილოზე"
+            data-en="90x60 Acrylic on canvas"></p>
+
+          <p data-ka="ფასი 1050 ₾" data-en="Price: 1050 GEL"></p>
+
+          <a
+            class="order-btn"
+            href="contactt.html?code=008"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 9 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Jellyfish.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Jellyfish2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="art-info">
+          <h3>"Jellyfish"</h3>
+
+          <p data-ka="კოდი 009" data-en="Code 009">კოდი 009</p>
+
+          <p
+            data-ka="100x80 აკრილი ტილოზე"
+            data-en="100x80 Acrylic on canvas"></p>
+
+          <a class="sold-btn" data-ka="გაყიდულია / Sold" data-en="Sold"
+            >გაყიდულია / Sold</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 10 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Metamorphosis.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Metamorphosis2.png" onclick="openLightbox(this.src)" />
+          </div>
+
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="art-info">
+          <h3>"Metamorphosis"</h3>
+
+          <p data-ka="კოდი 010" data-en="Code 010">კოდი 010</p>
+
+          <p
+            data-ka="100x80 აკრილი ტილოზე"
+            data-en="100x80 Acrylic on canvas"></p>
+
+          <p data-ka="ფასი 950 ₾" data-en="Price: 950 GEL"></p>
+
+          <a
+            class="order-btn"
+            href="contactt.html?code=010"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+
+      <!-- CARD 11 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="Moth.jpeg" onclick="openLightbox(this.src)" />
+            <img src="Moth2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="art-info">
+          <h3>"Moth"</h3>
+
+          <p data-ka="კოდი 011" data-en="Code 011">კოდი 011</p>
+
+          <p
+            data-ka="100x80 აკრილი ტილოზე"
+            data-en="100x80 Acrylic on canvas"></p>
+
+          <p data-ka="ფასი 950 ₾" data-en="Price: 950 GEL"></p>
+
+          <a
+            class="order-btn"
+            href="contactt.html?code=011"
+            data-ka="შეძენა →"
+            data-en="Purchase →"
+            >შეძენა →</a
+          >
+        </div>
+      </div>
+      <!-- CARD 12 -->
+      <div class="art-card">
+        <div class="slider-wrap">
+          <div class="slider-track">
+            <img src="The way up.jpeg" onclick="openLightbox(this.src)" />
+            <img src="The way up2.jpeg" onclick="openLightbox(this.src)" />
+          </div>
+
+          <button class="slider-btn prev" onclick="slide(this, -1)">
+            &#8249;
+          </button>
+
+          <button class="slider-btn next" onclick="slide(this, 1)">
+            &#8250;
+          </button>
+
+          <div class="slider-dots">
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="art-info">
+          <h3>"The Way Up"</h3>
+
+          <p data-ka="კოდი 012" data-en="Code 012">კოდი 012</p>
+
+          <p
+            data-ka="90x60 აკრილი ტილოზე"
+            data-en="90x60 Acrylic on canvas"></p>
+
+          <a class="sold-btn" data-ka="გაყიდულია / Sold" data-en="Sold"
+            >გაყიდულია / Sold</a
           >
         </div>
       </div>
@@ -589,9 +845,7 @@
     </div>
 
     <!-- FOOTER -->
-    <footer>
-      <p> © 2026 Mia Art Gallery | All Rights Reserved </p>
-    </footer>
+    <footer>© 2026 Mia Art Gallery | All Rights Reserved</footer>
 
     <script>
       const urlLang = new URLSearchParams(window.location.search).get("lang");
@@ -645,6 +899,7 @@
       document.getElementById("lightbox").onclick = (e) => {
         if (e.target === e.currentTarget) closeLightbox();
       };
+
       function slide(btn, dir) {
         const wrap = btn.closest(".slider-wrap");
         const track = wrap.querySelector(".slider-track");
@@ -656,8 +911,14 @@
         let cur = Math.round(track.scrollLeft / w);
         cur = (cur + dir + total) % total;
 
-        track.scrollTo({ left: cur * w, behavior: "smooth" });
-        dots.forEach((d, i) => d.classList.toggle("active", i === cur));
+        track.scrollTo({
+          left: cur * w,
+          behavior: "smooth",
+        });
+
+        dots.forEach((d, i) => {
+          d.classList.toggle("active", i === cur);
+        });
       }
 
       document.querySelectorAll(".slider-dots span").forEach((dot, i) => {
@@ -667,8 +928,14 @@
           const dots = wrap.querySelectorAll(".slider-dots span");
           const w = wrap.offsetWidth;
 
-          track.scrollTo({ left: i * w, behavior: "smooth" });
-          dots.forEach((d, j) => d.classList.toggle("active", j === i));
+          track.scrollTo({
+            left: i * w,
+            behavior: "smooth",
+          });
+
+          dots.forEach((d, j) => {
+            d.classList.toggle("active", j === i);
+          });
         });
       });
     </script>
