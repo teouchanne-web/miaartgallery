@@ -406,7 +406,7 @@
             data-ka="90x60 აკრილი ტილოზე"
             data-en="90x60 Acrylic on canvas"></p>
 
-          <p data-ka="ფასი 450 ₾" data-en="Price: 450 GEL"></p>
+          <p data-ka="ფასი 550 ₾" data-en="Price: 550 GEL"></p>
 
           <a
             class="order-btn"
@@ -490,7 +490,7 @@
             data-ka="100x70 აკრილი ტილოზე"
             data-en="100x70 Acrylic on canvas"></p>
 
-          <p data-ka="ფასი 450 ₾" data-en="Price: 450 GEL"></p>
+          <p data-ka="ფასი 550 ₾" data-en="Price: 550 GEL"></p>
 
           <a
             class="order-btn"
@@ -574,14 +574,8 @@
             data-ka="50x60 აკრილი, გრუნტი ტილოზე"
             data-en="50x60 Acrylic Gesso on canvas"></p>
 
-          <p data-ka="ფასი 200 ₾" data-en="Price: 200 GEL"></p>
-
-          <a
-            class="order-btn"
-            href="contactt.html?code=006"
-            data-ka="შეძენა →"
-            data-en="Purchase →"
-            >შეძენა →</a
+          <a class="sold-btn" data-ka="გაყიდულია / Sold" data-en="Sold"
+            >გაყიდულია / Sold</a
           >
         </div>
       </div>
@@ -617,7 +611,7 @@
             data-ka="80x60 აკრილი ტილოზე"
             data-en="80x60 Acrylic on canvas"></p>
 
-          <p data-ka="ფასი 200 ₾" data-en="Price: 200 GEL"></p>
+          <p data-ka="ფასი 450 ₾" data-en="Price: 450 GEL"></p>
 
           <a
             class="order-btn"
@@ -932,6 +926,28 @@
           });
         });
       });
+      const gallery = document.querySelector(".gallery");
+      const cards = [...gallery.querySelectorAll(".art-card")];
+
+      cards
+        .sort((a, b) => {
+          const codeA = parseInt(
+            a
+              .querySelector('[data-ka^="კოდი"]')
+              .getAttribute("data-ka")
+              .replace("კოდი ", ""),
+          );
+
+          const codeB = parseInt(
+            b
+              .querySelector('[data-ka^="კოდი"]')
+              .getAttribute("data-ka")
+              .replace("კოდი ", ""),
+          );
+
+          return codeB - codeA;
+        })
+        .forEach((card) => gallery.appendChild(card));
     </script>
   </body>
 </html>
